@@ -23,23 +23,17 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.mtm101.tinkeringwcreate.smelteryemulation.FakeSmelteryBlockEntity;
 import net.mtm101.tinkeringwcreate.smelteryemulation.IFakeSmeltery;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import slimeknights.tconstruct.smeltery.block.controller.ControllerBlock;
 import slimeknights.tconstruct.smeltery.block.entity.controller.HeatingStructureBlockEntity;
 import slimeknights.tconstruct.smeltery.block.entity.module.MeltingModule;
 import slimeknights.tconstruct.smeltery.block.entity.module.MeltingModuleInventory;
 import slimeknights.tconstruct.smeltery.block.entity.module.MultitankFuelModule;
 import slimeknights.tconstruct.smeltery.block.entity.tank.SmelteryTank;
-import zeh.createlowheated.mixin.HeatLevelMixin;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -50,7 +44,7 @@ import static java.lang.Math.*;
 
 // plenty of code used from create fluid tanks here.
 // quite literally my first ever block entity and it is something of this magnitude.
-public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiBlockEntityContainer.Inventory, IMultiBlockEntityContainer.Fluid, IHaveGoggleInformation
+public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity implements IMultiBlockEntityContainer.Inventory, IMultiBlockEntityContainer.Fluid, IHaveGoggleInformation
 {
 
     protected BlockPos controller;
@@ -71,7 +65,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
 
     protected boolean updateCapability;
 
-    public SmelteryTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+    public AbstractHeatingTankBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         width = 1;
         height = 1;
@@ -257,9 +251,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
         return isController() ? worldPosition : controller;
     }
 
-    public IFakeSmeltery createNewFakeEntity() {
-        return new FakeSmelteryBlockEntity(this);
-    }
+    public abstract IFakeSmeltery createNewFakeEntity();
 
     public IFakeSmeltery getFakeEntity()
     {
@@ -267,12 +259,12 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
     }
 
     @Override
-    public SmelteryTankBlockEntity getControllerBE() {
+    public AbstractHeatingTankBlockEntity getControllerBE() {
         if (isController() || !hasLevel())
             return this;
         BlockEntity blockEntity = level.getBlockEntity(controller);
-        if (blockEntity instanceof SmelteryTankBlockEntity)
-            return (SmelteryTankBlockEntity)blockEntity;
+        if (blockEntity instanceof AbstractHeatingTankBlockEntity)
+            return (AbstractHeatingTankBlockEntity)blockEntity;
         return null;
     }
 
@@ -313,7 +305,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
         }
 
         BlockState state = getBlockState();
-        if (SmelteryTankBlock.isSmelteryTank(state)) {
+        if (blockstateIsSelf(state)) {
             state = state.setValue(SmelteryTankBlock.BOTTOM, true);
             state = state.setValue(SmelteryTankBlock.TOP, true);
             state = state.setValue(SmelteryTankBlock.SHAPE, FluidTankBlock.Shape.WINDOW/*window ? Shape.WINDOW : Shape.PLAIN*/);
@@ -378,14 +370,19 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
     public void updateSize(int size)
     {
         IFakeSmeltery fakeEnt = getFakeEntity();
-        fakeEnt.updateContentSize(size * SmelteryTankBlock.MBPerBlock, size * SmelteryTankBlock.ItemsPerBlock);
+        fakeEnt.updateContentSize(size * getMillibucketsPerBlock(), size * getItemsPerBlock());
         refreshCapability();
     }
+
+    public abstract int getMillibucketsPerBlock();
+    public abstract int getItemsPerBlock();
+    public abstract boolean blockstateIsSelf(BlockState state);
+
 
     @Override
     public void notifyMultiUpdated() {
         BlockState state = this.getBlockState();
-        if (SmelteryTankBlock.isSmelteryTank(state)) { // safety
+        if (blockstateIsSelf(state)) { // safety
             state = state.setValue(FluidTankBlock.BOTTOM, getController().getY() == getBlockPos().getY());
             state = state.setValue(FluidTankBlock.TOP, getController().getY() + height - 1 == getBlockPos().getY());
             level.setBlock(getBlockPos(), state, 6);
@@ -405,7 +402,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
 
                     BlockPos pos = this.worldPosition.offset(xOffset, yOffset, zOffset);
                     BlockState blockState = level.getBlockState(pos);
-                    if (!SmelteryTankBlock.isSmelteryTank(blockState))
+                    if (!blockstateIsSelf(blockState))
                         continue;
 
                     FluidTankBlock.Shape shape = FluidTankBlock.Shape.PLAIN;
@@ -513,7 +510,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        SmelteryTankBlockEntity controllerBE = getControllerBE();
+        AbstractHeatingTankBlockEntity controllerBE = getControllerBE();
         if (controllerBE == null) return false;
         IFakeSmeltery fakeEnt = getFakeEntity();
         if (fakeEnt == null) return false;
