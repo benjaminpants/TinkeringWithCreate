@@ -127,10 +127,17 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
             return;
         if (!isController())
             return;
-        updateSize(width * width * height);
+        refreshController();
         ConnectivityHandler.formMulti(this);
     }
 
+    public void refreshController()
+    {
+        if (!isController())
+            return;
+        updateSize(width * width * height);
+        setChanged();
+    }
 
     // TODO: change hardcoded values to refer to a config so modpack devs don't kill me
     public void reCalcHeat()
@@ -201,6 +208,10 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
                 }
                 fakeEntity.load(compound.getCompound("SmelteryData"));
             }
+        }
+        else
+        {
+            fakeEntity = null; //??
         }
 
         if (!clientPacket)
@@ -376,7 +387,7 @@ public class SmelteryTankBlockEntity extends SmartBlockEntity implements IMultiB
         }
         if (isController()) {
             setWindows(true);
-            updateSize(width * width * height);
+            refreshController();
         }
         setChanged();
     }
