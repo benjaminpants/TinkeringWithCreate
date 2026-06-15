@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "tinkeringwcreate:andesite_alloy_nugget"
+  },
+  "result": {
+    "amount": 10,
+    "fluid": "tinkeringwcreate:molten_andesite_alloy"
+  },
+  "temperature": 600,
+  "time": 20
+}

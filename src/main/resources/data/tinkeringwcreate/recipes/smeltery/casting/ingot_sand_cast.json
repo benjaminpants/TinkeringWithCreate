@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "tag": "tconstruct:casts/single_use/ingot"
+  },
+  "cast_consumed": true,
+  "cooling_time": 60,
+  "fluid": {
+    "amount": 90,
+    "fluid": "tinkeringwcreate:molten_andesite_alloy"
+  },
+  "result": {
+    "item": "create:andesite_alloy"
+  }
+}

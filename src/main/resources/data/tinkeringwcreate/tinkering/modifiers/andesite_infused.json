@@ -1,0 +1,11 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tconstruct:material_repair",
+      "durability": 100,
+      "material": "tinkeringwcreate:andesite_alloy"
+    }
+  ],
+  "tooltip_display": "always"
+}

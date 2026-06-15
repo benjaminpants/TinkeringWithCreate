@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "tinkeringwcreate:andesite_alloy",
+  "result": {
+    "amount": 90,
+    "fluid": "tinkeringwcreate:molten_andesite_alloy"
+  },
+  "temperature": 600
+}

@@ -11,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mtm101.tinkeringwcreate.registers.ModBlockEntities;
 import net.mtm101.tinkeringwcreate.registers.ModBlocks;
+import net.mtm101.tinkeringwcreate.registers.ModFluids;
 import net.mtm101.tinkeringwcreate.registers.ModItems;
 import org.slf4j.Logger;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -46,7 +47,8 @@ public class TinkeringWCreate
         ModBlocks.register();
         ModBlockEntities.register();
         ModItems.register();
-
+        ModFluids.register();
+        ModFluids.fluidRegister.register(modEventBus);
     }
 
     public static ResourceLocation asResource(String path) {

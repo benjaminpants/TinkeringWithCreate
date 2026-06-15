@@ -1,11 +1,19 @@
 {
   "item.tinkeringwcreate.crushed_raw_cobalt": "Crushed Raw Cobalt",
+  "item.tinkeringwcreate.molten_andesite_alloy_bucket": "Molten Andesite Alloy Bucket",
+  "item.tinkeringwcreate.andesite_alloy_nugget": "Andesite Alloy Nugget",
+  "fluid.tinkeringwcreate.molten_andesite_alloy": "Molten Andesite Alloy",
   "block.tinkeringwcreate.smeltery_tank": "Copper Compacted Smeltery",
   "block.tinkeringwcreate.foundry_tank": "Brass Compacted Foundry",
+  "material.tinkeringwcreate.andesite_alloy": "Andesite Alloy",
+  "material.tinkeringwcreate.andesite": "Andesite",
   "create.gui.goggles.smeltery.free": "Free: ",
   "create.gui.goggles.smeltery": "Copper Compacted Smeltery Info",
   "create.gui.goggles.smeltery.andmore": "and %s more...",
   "create.gui.goggles.smeltery.temp": "Temperature: %s°",
   "create.gui.goggles.smeltery.rate": "Rate: %sx",
-  "create.gui.goggles.foundry": "Brass Compacted Foundry Info"
+  "create.gui.goggles.foundry": "Brass Compacted Foundry Info",
+  "modifier.tinkeringwcreate.andesite_infused": "Andesite-Infused",
+  "modifier.tinkeringwcreate.andesite_infused.description": "Tool can be repaired with Andesite Alloy",
+  "modifier.tinkeringwcreate.andesite_infused.flavor": "Createtastic!"
 }
