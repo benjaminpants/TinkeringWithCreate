@@ -1,4 +1,4 @@
-package net.mtm101.tinkeringwcreate.smelterytank;
+package net.mtm101.tinkeringwcreate.foundrytank;
 
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
@@ -10,30 +10,30 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.mtm101.tinkeringwcreate.registers.ModBlockEntities;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.Mirror;
 import slimeknights.tconstruct.smeltery.block.controller.ControllerBlock;
 
-public class SmelteryTankBlock extends Block implements IWrenchable, IBE<SmelteryTankBlockEntity>
+public class FoundryTankBlock extends Block implements IWrenchable, IBE<FoundryTankBlockEntity>
 {
     public static final BooleanProperty TOP = BooleanProperty.create("top");
     public static final BooleanProperty BOTTOM = BooleanProperty.create("bottom");
     public static final EnumProperty<FluidTankBlock.Shape> SHAPE = EnumProperty.create("shape", FluidTankBlock.Shape.class);
     public static final BooleanProperty IN_STRUCTURE = ControllerBlock.IN_STRUCTURE;
 
-    public static final int ITEMS_PER_BLOCK = 4;
-    public static final int MB_PER_BLOCK = 1080;
+    public static final int ITEMS_PER_BLOCK = 8;
+    public static final int MB_PER_BLOCK = 2160;
 
 
     @Override
@@ -93,7 +93,7 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
         p_206840_1_.add(TOP, BOTTOM, SHAPE, IN_STRUCTURE);
     }
 
-    public SmelteryTankBlock(Properties pProperties) {
+    public FoundryTankBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(TOP, true)
                 .setValue(BOTTOM, true)
@@ -101,8 +101,8 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
                 .setValue(IN_STRUCTURE, true));
     }
 
-    public static boolean isSmelteryTank(BlockState state) {
-        return state.getBlock() instanceof SmelteryTankBlock;
+    public static boolean isFoundryTank(BlockState state) {
+        return state.getBlock() instanceof FoundryTankBlock;
     }
 
     @Override
@@ -111,13 +111,13 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
     }
 
     @Override
-    public Class<SmelteryTankBlockEntity> getBlockEntityClass() {
-        return SmelteryTankBlockEntity.class;
+    public Class<FoundryTankBlockEntity> getBlockEntityClass() {
+        return FoundryTankBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends SmelteryTankBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.SMELTERY_TANK_BLOCK_ENTITY.get();
+    public BlockEntityType<? extends FoundryTankBlockEntity> getBlockEntityType() {
+        return ModBlockEntities.FOUNDRY_TANK_BLOCK_ENTITY.get();
     }
 
     @Override
@@ -126,7 +126,7 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
             return;
         if (moved)
             return;
-        withBlockEntityDo(world, pos, SmelteryTankBlockEntity::updateConnectivity);
+        withBlockEntityDo(world, pos, FoundryTankBlockEntity::updateConnectivity);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.hasBlockEntity() && (state.getBlock() != newState.getBlock() || !newState.hasBlockEntity())) {
             BlockEntity be = world.getBlockEntity(pos);
-            if (!(be instanceof SmelteryTankBlockEntity tankBE))
+            if (!(be instanceof FoundryTankBlockEntity tankBE))
                 return;
             world.removeBlockEntity(pos);
             ConnectivityHandler.splitMulti(tankBE);

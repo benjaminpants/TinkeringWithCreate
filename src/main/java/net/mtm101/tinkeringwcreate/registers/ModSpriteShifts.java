@@ -13,6 +13,10 @@ public class ModSpriteShifts {
             SMELTERY_TANK_TOP = getShift(AllCTTypes.RECTANGLE, "smeltery_tank_top"),
             SMELTERY_TANK_INNER = getShift(AllCTTypes.RECTANGLE, "smeltery_tank_inner");
 
+    public static final CTSpriteShiftEntry FOUNDRY_TANK = getShift(AllCTTypes.RECTANGLE, "foundry_tank"),
+            FOUNDRY_TANK_TOP = getShift(AllCTTypes.RECTANGLE, "foundry_tank_top"),
+            FOUNDRY_TANK_INNER = getShift(AllCTTypes.RECTANGLE, "foundry_tank_inner");
+
     private static CTSpriteShiftEntry getShift(CTType type, String blockTextureName) {
         return getCT(type, TinkeringWCreate.asResource("block/" + blockTextureName), TinkeringWCreate.asResource("block/" + blockTextureName + "_connected"));
     }

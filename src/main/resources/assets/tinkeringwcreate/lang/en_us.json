@@ -1,9 +1,11 @@
 {
   "item.tinkeringwcreate.crushed_raw_cobalt": "Crushed Raw Cobalt",
-  "block.tinkeringwcreate.smeltery_tank": "Smeltery Tank",
+  "block.tinkeringwcreate.smeltery_tank": "Copper Compacted Smeltery",
+  "block.tinkeringwcreate.foundry_tank": "Brass Compacted Foundry",
   "create.gui.goggles.smeltery.free": "Free: ",
-  "create.gui.goggles.smeltery": "Smeltery Tank Info",
+  "create.gui.goggles.smeltery": "Copper Compacted Smeltery Info",
   "create.gui.goggles.smeltery.andmore": "and %s more...",
   "create.gui.goggles.smeltery.temp": "Temperature: %s°",
-  "create.gui.goggles.smeltery.rate": "Rate: %sx"
+  "create.gui.goggles.smeltery.rate": "Rate: %sx",
+  "create.gui.goggles.foundry": "Brass Compacted Foundry Info"
 }

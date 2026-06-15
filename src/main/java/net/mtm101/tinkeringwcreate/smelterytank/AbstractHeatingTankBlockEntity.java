@@ -27,7 +27,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.mtm101.tinkeringwcreate.smelteryemulation.FakeSmelteryBlockEntity;
 import net.mtm101.tinkeringwcreate.smelteryemulation.IFakeSmeltery;
 import slimeknights.tconstruct.smeltery.block.entity.controller.HeatingStructureBlockEntity;
 import slimeknights.tconstruct.smeltery.block.entity.module.MeltingModule;
@@ -50,8 +49,8 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
     protected BlockPos controller;
     protected BlockPos lastKnownPos;
 
-    protected int width;
-    protected int height;
+    public int width;
+    public int height;
     protected boolean updateConnectivity;
 
     private static final int SYNC_RATE = 8;
@@ -116,7 +115,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         super.write(compound, clientPacket);
     }
 
-    protected void updateConnectivity() {
+    public void updateConnectivity() {
         updateConnectivity = false;
         if (level.isClientSide)
             return;
@@ -508,6 +507,8 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
 
     private static final int TOOLTIP_MAX_ITEMS_SHOWN = 8;
 
+    public abstract String getGoggleName();
+
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
         AbstractHeatingTankBlockEntity controllerBE = getControllerBE();
@@ -515,7 +516,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         IFakeSmeltery fakeEnt = getFakeEntity();
         if (fakeEnt == null) return false;
         LangBuilder mb = CreateLang.translate("generic.unit.millibuckets");
-        CreateLang.translate("gui.goggles.smeltery")
+        CreateLang.translate(getGoggleName())
                 .forGoggles(tooltip);
 
         DecimalFormat rateFormat = new DecimalFormat("#.##");

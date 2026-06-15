@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
+import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankBlockEntity;
 import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankBlockEntity;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.tconstruct.smeltery.block.entity.controller.FoundryBlockEntity;
@@ -18,10 +19,10 @@ import java.util.Collections;
 // NEVER USE THIS AS AN ACTUAL BLOCK ENTITY!!
 public class FakeFoundryBlockEntity extends FoundryBlockEntity implements IFakeSmeltery
 {
-    public SmelteryTankBlockEntity myParent;
+    public FoundryTankBlockEntity myParent;
     public FakeMultitankFuelModule fakeFuelModule = new FakeMultitankFuelModule(this, () -> structure != null ? structure.getTanks() : Collections.emptyList());
 
-    public FakeFoundryBlockEntity(SmelteryTankBlockEntity myParent) {
+    public FakeFoundryBlockEntity(FoundryTankBlockEntity myParent) {
         super(myParent.getBlockPos(),myParent.getBlockState());
         this.myParent = myParent;
         setLevel(myParent.getLevel());

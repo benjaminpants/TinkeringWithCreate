@@ -1,4 +1,4 @@
-package net.mtm101.tinkeringwcreate.smelterytank;
+package net.mtm101.tinkeringwcreate.foundrytank;
 
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.equipment.symmetryWand.SymmetryWandItem;
@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.mtm101.tinkeringwcreate.registers.ModBlockEntities;
 
-public class SmelteryTankItem extends BlockItem {
-    public SmelteryTankItem(Block pBlock, Properties pProperties) {
+public class FoundryTankItem extends BlockItem {
+    public FoundryTankItem(Block pBlock, Properties pProperties) {
         super(pBlock, pProperties);
     }
 
@@ -66,11 +66,11 @@ public class SmelteryTankItem extends BlockItem {
             return;*/
         if (SymmetryWandItem.presentInHotbar(player))
             return;
-        SmelteryTankBlockEntity tankAt = ConnectivityHandler.partAt(
-                ModBlockEntities.SMELTERY_TANK_BLOCK_ENTITY.get(), world, placedOnPos);
+        FoundryTankBlockEntity tankAt = ConnectivityHandler.partAt(
+                ModBlockEntities.FOUNDRY_TANK_BLOCK_ENTITY.get(), world, placedOnPos);
         if (tankAt == null)
             return;
-        SmelteryTankBlockEntity controllerBE = (SmelteryTankBlockEntity)tankAt.getControllerBE();
+        FoundryTankBlockEntity controllerBE = (FoundryTankBlockEntity)tankAt.getControllerBE();
         if (controllerBE == null)
             return;
 
@@ -91,7 +91,7 @@ public class SmelteryTankItem extends BlockItem {
             for (int zOffset = 0; zOffset < width; zOffset++) {
                 BlockPos offsetPos = startPos.offset(xOffset, 0, zOffset);
                 BlockState blockState = world.getBlockState(offsetPos);
-                if (SmelteryTankBlock.isSmelteryTank(blockState))
+                if (FoundryTankBlock.isFoundryTank(blockState))
                     continue;
                 if (!blockState.canBeReplaced())
                     return;
@@ -106,7 +106,7 @@ public class SmelteryTankItem extends BlockItem {
             for (int zOffset = 0; zOffset < width; zOffset++) {
                 BlockPos offsetPos = startPos.offset(xOffset, 0, zOffset);
                 BlockState blockState = world.getBlockState(offsetPos);
-                if (SmelteryTankBlock.isSmelteryTank(blockState))
+                if (FoundryTankBlock.isFoundryTank(blockState))
                     continue;
                 BlockPlaceContext context = BlockPlaceContext.at(ctx, offsetPos, face);
                 player.getPersistentData()
