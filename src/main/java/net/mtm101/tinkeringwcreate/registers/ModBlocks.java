@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Blocks;
+import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankBlock;
 import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankBlock;
 import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankBlockEntity;
 import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankItem;
@@ -36,6 +37,14 @@ public class ModBlocks
             .item(FoundryTankItem::new)
             .build()
             .register();
+
+    public static final BlockEntry<TinkersBacktankBlock> TINKERS_BACKTANK =
+            REGISTRATE.block("tinkers_backtank", TinkersBacktankBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    //.transform(BuilderTransformers.backtank(AllItems.COPPER_BACKTANK::get))
+                    .register();
+
+
     // this is still weird as fuck
     public static void register()
     {
