@@ -3,6 +3,7 @@ package net.mtm101.tinkeringwcreate.registers;
 import com.simibubi.create.content.equipment.armor.BacktankRenderer;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import net.mtm101.tinkeringwcreate.backtanks.TinkerBacktankRenderer;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankBlockEntity;
 import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankBlockEntity;
 import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankBlockEntity;
@@ -21,9 +22,9 @@ public class ModBlockEntities
 
     public static final BlockEntityEntry<TinkersBacktankBlockEntity> TINKERS_BACKTANK = REGISTRATE
             .blockEntity("tinkers_backtank", TinkersBacktankBlockEntity::new)
-            .visual(() -> SingleAxisRotatingVisual::backtank)
+            //.visual(() -> SingleAxisRotatingVisual::backtank)
             .validBlocks(ModBlocks.TINKERS_BACKTANK)
-            //.renderer(() -> BacktankRenderer::new)
+            .renderer(() -> TinkerBacktankRenderer::new)
             .register();
 
     // this is still weird as fuck

@@ -24,13 +24,16 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.mtm101.tinkeringwcreate.TinkeringWCreate;
+import org.jetbrains.annotations.NotNull;
 import org.openjdk.nashorn.internal.objects.annotations.Getter;
 import slimeknights.mantle.client.SafeClientAccess;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.client.armor.ArmorModelManager;
+import slimeknights.tconstruct.library.client.model.ModelProperties;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.EnchantmentModifierHook;
@@ -46,6 +49,7 @@ import slimeknights.tconstruct.library.tools.helper.TooltipUtil;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.item.IModifiableDisplay;
 import slimeknights.tconstruct.library.tools.item.armor.DummyArmorMaterial;
+import slimeknights.tconstruct.library.tools.nbt.MaterialIdNBT;
 import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
@@ -61,8 +65,14 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem.PIGLIN_NEUTRAL;
+import static slimeknights.tconstruct.library.tools.nbt.ToolStack.TAG_MATERIALS;
 
 public class TinkersBacktankItem extends BacktankItem implements IModifiable, IModifiableDisplay {
+
+    // copy of implementation in BlockEntity
+    public @NotNull ModelData getBlockModelData(ItemStack stack) {
+        return ModelData.builder().with(ModelProperties.MATERIALS, Objects.requireNonNullElse(MaterialIdNBT.readFromNBT(stack.getTag().get(TAG_MATERIALS)), MaterialIdNBT.EMPTY)).build();
+    }
 
     //@Getter
     protected ToolDefinition toolDefinition;

@@ -1,6 +1,7 @@
 package net.mtm101.tinkeringwcreate.registers;
 
 
+import com.simibubi.create.foundation.data.BuilderTransformers;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
@@ -14,6 +15,7 @@ import net.mtm101.tinkeringwcreate.foundrytank.FoundryTankModel;
 import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankBlock;
 import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankItem;
 import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankModel;
+import slimeknights.tconstruct.library.client.model.tools.MaterialBlockModel;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 import static net.mtm101.tinkeringwcreate.TinkeringWCreate.REGISTRATE;
@@ -41,6 +43,7 @@ public class ModBlocks
     public static final BlockEntry<TinkersBacktankBlock> TINKERS_BACKTANK =
             REGISTRATE.block("tinkers_backtank", TinkersBacktankBlock::new)
                     .initialProperties(SharedProperties::copperMetal)
+                    .addLayer(() -> RenderType::cutoutMipped)
                     //.transform(BuilderTransformers.backtank(AllItems.COPPER_BACKTANK::get))
                     .register();
 
@@ -49,5 +52,6 @@ public class ModBlocks
     public static void register()
     {
         //Blocks.GLASS
+        //MaterialBlockModel
     }
 }

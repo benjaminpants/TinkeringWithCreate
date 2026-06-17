@@ -1,30 +1,47 @@
 {
+	"loader": "tconstruct:material_block",
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "create:block/copper_backtank",
-		"particle": "create:block/copper_backtank"
+		"base": "tinkeringwcreate:block/backtank/tinkers_backtank_base",
+		"case": "tinkeringwcreate:block/backtank/tinkers_backtank_case",
+		"particle": "tinkeringwcreate:block/backtank/tinkers_backtank_base"
 	},
+	"render_type": "minecraft:cutout_mipped",
+	"parts": [ "case" ],
 	"elements": [
 		{
 			"from": [6.5, 12, 6.5],
 			"to": [9.5, 13, 9.5],
 			"faces": {
-				"north": {"uv": [14.5, 4, 16, 4.5], "texture": "#0"},
-				"east": {"uv": [14.5, 3.5, 16, 4], "texture": "#0"},
-				"south": {"uv": [14.5, 3.5, 16, 4], "texture": "#0"},
-				"west": {"uv": [14.5, 3, 16, 3.5], "texture": "#0"}
+				"north": {"uv": [14.5, 4, 16, 4.5], "texture": "#base"},
+				"east": {"uv": [14.5, 3.5, 16, 4], "texture": "#base"},
+				"south": {"uv": [14.5, 3.5, 16, 4], "texture": "#base"},
+				"west": {"uv": [14.5, 3, 16, 3.5], "texture": "#base"}
 			}
 		},
 		{
 			"from": [6, 13, 6],
 			"to": [10, 16, 10],
 			"faces": {
-				"north": {"uv": [14, 2, 16, 3.5], "texture": "#0"},
-				"east": {"uv": [14, 2, 16, 3.5], "texture": "#0"},
-				"south": {"uv": [14, 2, 16, 3.5], "texture": "#0"},
-				"west": {"uv": [14, 2, 16, 3.5], "texture": "#0"},
-				"up": {"uv": [14, 0, 16, 2], "texture": "#0"},
-				"down": {"uv": [15.5, 5, 16, 5.5], "texture": "#0"}
+				"north": {"uv": [14, 2, 16, 3.5], "texture": "#base"},
+				"east": {"uv": [14, 2, 16, 3.5], "texture": "#base"},
+				"south": {"uv": [14, 2, 16, 3.5], "texture": "#base"},
+				"west": {"uv": [14, 2, 16, 3.5], "texture": "#base"},
+				"up": {"uv": [14, 0, 16, 2], "texture": "#base"},
+				"down": {"uv": [15.5, 5, 16, 5.5], "texture": "#base"}
+			}
+		},
+		{
+			"from": [6, 13, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [14, 2, 16, 3.5], "texture": "#case"},
+				"east": {"uv": [14, 2, 16, 3.5], "texture": "#case"},
+				"south": {"uv": [14, 2, 16, 3.5], "texture": "#case"},
+				"west": {"uv": [14, 2, 16, 3.5], "texture": "#case"},
+				"up": {"uv": [14, 0, 16, 2], "texture": "#case"},
+				"down": {"uv": [15.5, 5, 16, 5.5], "texture": "#case"}
 			}
 		}
 	],
@@ -32,6 +49,12 @@
 		{
 			"name": "Axle",
 			"origin": [8, 8, 8],
+			"scope": 0,
+			"color": 0,
 			"children": []
-		}, 0, 1]
+		},
+		0,
+		1,
+		2
+	]
 }

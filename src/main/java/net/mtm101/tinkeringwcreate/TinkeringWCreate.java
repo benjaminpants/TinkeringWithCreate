@@ -2,17 +2,21 @@ package net.mtm101.tinkeringwcreate;
 
 import com.mojang.logging.LogUtils;
 import net.createmod.catnip.lang.FontHelper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.mtm101.tinkeringwcreate.registers.ModBlockEntities;
-import net.mtm101.tinkeringwcreate.registers.ModBlocks;
-import net.mtm101.tinkeringwcreate.registers.ModFluids;
-import net.mtm101.tinkeringwcreate.registers.ModItems;
+import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankArmorLayer;
+import net.mtm101.tinkeringwcreate.registers.*;
 import org.slf4j.Logger;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -48,6 +52,7 @@ public class TinkeringWCreate
         ModBlockEntities.register();
         ModItems.register();
         ModFluids.register();
+        ModPartialModels.register();
         ModFluids.fluidRegister.register(modEventBus);
     }
 

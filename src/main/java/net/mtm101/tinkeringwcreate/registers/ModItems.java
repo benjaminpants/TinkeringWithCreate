@@ -17,7 +17,6 @@ import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 import static net.mtm101.tinkeringwcreate.TinkeringWCreate.REGISTRATE;
-import static slimeknights.tconstruct.TConstruct.getResource;
 
 public class ModItems
 {

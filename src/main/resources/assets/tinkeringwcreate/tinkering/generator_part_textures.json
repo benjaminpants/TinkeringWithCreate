@@ -17,6 +17,16 @@
       "allow_animated": false,
       "path": "tinkeringwcreate:tinker_armor/tinkers_backtank_straps_armor",
       "stat_type": "tconstruct:armor_maille"
+    },
+	{
+      "allow_animated": false,
+      "path": "tinkeringwcreate:block/backtank/tinkers_backtank_case",
+      "stat_type": "tconstruct:armor_plating"
+    },
+    {
+      "allow_animated": false,
+      "path": "tinkeringwcreate:block/backtank/tinkers_backtank_straps",
+      "stat_type": "tconstruct:armor_maille"
     }
   ],
   "replace": false

@@ -1,6 +1,7 @@
 {
   "values": [
     "tinkeringwcreate:smeltery_tank",
-    "tinkeringwcreate:foundry_tank"
+    "tinkeringwcreate:foundry_tank",
+	"tinkeringwcreate:tinkers_backtank"
   ]
 }
