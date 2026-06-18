@@ -1,6 +1,7 @@
 {
 	"modifier.tinkeringwcreate": {
 		"__traits__": null,
-		"andesite_infused": "#A2AE9F"
+		"andesite_infused": "#A2AE9F",
+		"capacity": "#F6CB82"
 	}
 }

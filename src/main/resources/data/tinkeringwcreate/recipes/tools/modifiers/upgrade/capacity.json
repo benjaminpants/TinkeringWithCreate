@@ -1,0 +1,21 @@
+{
+  "type": "tconstruct:incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": {
+    "item": "create:fluid_tank"
+  },
+  "level": {
+    "max": 3
+  },
+  "needed_per_level": 32,
+  "result": "tinkeringwcreate:capacity",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    {
+      "item": "tinkeringwcreate:tinkers_backtank"
+    }
+  ]
+}

@@ -16,8 +16,12 @@
   "create.gui.goggles.smeltery.rate": "Rate: %sx",
   "create.gui.goggles.foundry": "Brass Compacted Foundry Info",
   "modifier.tinkeringwcreate.andesite_infused": "Andesite-Infused",
-  "modifier.tinkeringwcreate.andesite_infused.description": "Tool can be repaired with Andesite Alloy",
+  "modifier.tinkeringwcreate.andesite_infused.description": "Tool can be repaired with Andesite Alloy.",
   "modifier.tinkeringwcreate.andesite_infused.flavor": "Creatastic!",
+
+  "modifier.tinkeringwcreate.capacity": "Capacity",
+  "modifier.tinkeringwcreate.capacity.description": "Increases the amount of air the Backtank can hold.",
+  "modifier.tinkeringwcreate.capacity.flavor": "20% more air, per air!",
 
   "item.tinkeringwcreate.backtank_case": "Backtank Case",
   "item.tinkeringwcreate.backtank_straps": "Backtank Straps"
