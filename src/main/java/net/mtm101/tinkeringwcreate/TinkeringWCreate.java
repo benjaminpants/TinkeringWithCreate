@@ -15,6 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.mtm101.tinkeringwcreate.backtanks.BacktankCaseMaterialStats;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankArmorLayer;
 import net.mtm101.tinkeringwcreate.registers.*;
 import org.slf4j.Logger;
@@ -22,6 +23,8 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import slimeknights.tconstruct.library.materials.MaterialRegistry;
+import slimeknights.tconstruct.library.materials.stats.MaterialStatsManager;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -63,5 +66,7 @@ public class TinkeringWCreate
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
+        MaterialRegistry.getInstance().registerStatType(BacktankCaseMaterialStats.INSTANCE, MaterialRegistry.ARMOR);
+        //registerStatType
     }
 }

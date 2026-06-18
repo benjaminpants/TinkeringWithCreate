@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.mtm101.tinkeringwcreate.TinkeringWCreate;
+import net.mtm101.tinkeringwcreate.backtanks.BacktankCaseMaterialStats;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankBlockItem;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankItem;
 import slimeknights.tconstruct.common.Sounds;
@@ -29,7 +30,7 @@ public class ModItems
     public static final ItemEntry<Item> ANDESITE_ALLOY_NUGGET = REGISTRATE.item("andesite_alloy_nugget", Item::new)
             .register();
 
-    public static final ItemEntry<ToolPartItem> BACKTANK_CASE = REGISTRATE.item("backtank_case", (p) -> new ToolPartItem(p, PlatingMaterialStats.CHESTPLATE.getId()))
+    public static final ItemEntry<ToolPartItem> BACKTANK_CASE = REGISTRATE.item("backtank_case", (p) -> new ToolPartItem(p, BacktankCaseMaterialStats.INSTANCE.getId()))
             .register();
 
     public static final ItemEntry<ToolPartItem> BACKTANK_STRAPS = REGISTRATE.item("backtank_straps", (p) -> new ToolPartItem(p, StatlessMaterialStats.MAILLE.getIdentifier()))
