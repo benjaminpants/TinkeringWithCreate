@@ -20,6 +20,7 @@ import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
@@ -38,6 +39,8 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.EnchantmentModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.SlotStackModifierHook;
+import slimeknights.tconstruct.library.modifiers.modules.build.RarityModule;
+import slimeknights.tconstruct.library.tools.IndestructibleItemEntity;
 import slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -302,5 +305,28 @@ public class TinkersBacktankItem extends BacktankItem implements IModifiable, IM
             toolForRendering = ToolBuildHandler.buildToolForRendering(this, this.getToolDefinition());
         }
         return toolForRendering;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        // we use enchantments to handle some modifiers, so don't glow from them
+        // however, if a modifier wants to glow let them
+        return ModifierUtil.checkVolatileFlag(stack, SHINY);
+    }
+
+    @Override
+    public Rarity getRarity(ItemStack stack) {
+        return RarityModule.getRarity(stack);
+    }
+
+    @Override
+    public boolean hasCustomEntity(ItemStack stack) {
+        return IndestructibleItemEntity.hasCustomEntity(stack);
+    }
+
+    @Nullable
+    @Override
+    public Entity createEntity(Level level, Entity original, ItemStack stack) {
+        return IndestructibleItemEntity.createFrom(level, original, stack);
     }
 }

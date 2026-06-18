@@ -27,6 +27,18 @@
       "allow_animated": false,
       "path": "tinkeringwcreate:block/backtank/tinkers_backtank_straps",
       "stat_type": "tconstruct:armor_maille"
+    },
+	{
+      "path": "tinkeringwcreate:item/divinghelmet/diving_helmet_case",
+      "stat_type": "tconstruct:armor_plating"
+    },
+	{
+      "path": "tinkeringwcreate:item/divinghelmet/diving_helmet_case_broken",
+      "stat_type": "tconstruct:armor_plating"
+    },
+    {
+      "path": "tinkeringwcreate:item/divinghelmet/diving_helmet_straps",
+      "stat_type": "tconstruct:armor_maille"
     }
   ],
   "replace": false

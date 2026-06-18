@@ -6,6 +6,7 @@
   "block.tinkeringwcreate.smeltery_tank": "Copper Compacted Smeltery",
   "block.tinkeringwcreate.foundry_tank": "Brass Compacted Foundry",
   "item.tinkeringwcreate.tinkers_backtank": "Backtank",
+  "item.tinkeringwcreate.diving_helmet": "Diving Helmet",
   "material.tinkeringwcreate.andesite_alloy": "Andesite Alloy",
   "material.tinkeringwcreate.andesite": "Andesite",
   "create.gui.goggles.smeltery.free": "Free: ",
@@ -16,7 +17,7 @@
   "create.gui.goggles.foundry": "Brass Compacted Foundry Info",
   "modifier.tinkeringwcreate.andesite_infused": "Andesite-Infused",
   "modifier.tinkeringwcreate.andesite_infused.description": "Tool can be repaired with Andesite Alloy",
-  "modifier.tinkeringwcreate.andesite_infused.flavor": "Createtastic!",
+  "modifier.tinkeringwcreate.andesite_infused.flavor": "Creatastic!",
 
   "item.tinkeringwcreate.backtank_case": "Backtank Case",
   "item.tinkeringwcreate.backtank_straps": "Backtank Straps"

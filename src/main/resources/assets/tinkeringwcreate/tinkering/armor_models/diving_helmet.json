@@ -1,0 +1,19 @@
+{
+  "layers": [
+	{
+      "type": "tconstruct:fixed",
+      "index": 0,
+      "prefix": "tinkeringwcreate:tinkers_backtank_base_"
+    },
+    {
+      "type": "tconstruct:material",
+      "index": 0,
+      "prefix": "tinkeringwcreate:tinkers_backtank_case_"
+    },
+    {
+      "type": "tconstruct:material",
+      "index": 1,
+      "prefix": "tinkeringwcreate:tinkers_backtank_straps_"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default",
+  "textures": {
+	"base": "tinkeringwcreate:item/divinghelmet/diving_helmet_base",
+    "case": "tinkeringwcreate:item/divinghelmet/diving_helmet_case_broken",
+    "straps":  "tinkeringwcreate:item/divinghelmet/diving_helmet_straps"
+  },
+  "modifier_roots": [ "tconstruct:item/tool/armor/plate/helmet/modifiers/" ],
+  "parts": [
+    { "name": "case", "index": 0 },
+    { "name": "straps",  "index": 1 },
+	{ "name": "base" }
+  ]
+}

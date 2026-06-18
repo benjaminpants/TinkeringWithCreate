@@ -1,14 +1,17 @@
 package net.mtm101.tinkeringwcreate.registers;
 import com.simibubi.create.AllTags.AllItemTags;
 import com.simibubi.create.content.equipment.armor.AllArmorMaterials;
+import com.simibubi.create.content.equipment.armor.DivingHelmetItem;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.mtm101.tinkeringwcreate.TinkeringWCreate;
 import net.mtm101.tinkeringwcreate.backtanks.BacktankCaseMaterialStats;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankBlockItem;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankItem;
+import net.mtm101.tinkeringwcreate.divinghelmet.TinkersDivingHelmetItem;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
@@ -21,8 +24,6 @@ import static net.mtm101.tinkeringwcreate.TinkeringWCreate.REGISTRATE;
 
 public class ModItems
 {
-    //public static final ModifiableArmorMaterial BACKTANKS = new ModifiableArmorMaterial();
-
     public static final ItemEntry<Item> CRUSHED_COBALT = REGISTRATE.item("crushed_raw_cobalt", Item::new)
             //.tag(AllItemTags.CRUSHED_RAW_MATERIALS.tag)
             .register();
@@ -44,11 +45,20 @@ public class ModItems
     @SuppressWarnings("deprecation")
     public static final ItemEntry<TinkersBacktankItem> TINKERS_BACKTANK = REGISTRATE
             .item("tinkers_backtank",
-                    p -> new TinkersBacktankItem(p, ToolDefinition.create(new ResourceLocation(TinkeringWCreate.MOD_ID, "tinkers_backtank")),() -> TINKERS_BACKTANK_PLACEABLE.get())) // TODO: PLACEHOLDER! PLATE IS PLACEHOLDER! MAKE CUSTOM ONE!
+                    p -> new TinkersBacktankItem(p, ToolDefinition.create(new ResourceLocation(TinkeringWCreate.MOD_ID, "tinkers_backtank")),() -> TINKERS_BACKTANK_PLACEABLE.get()))
             //.model(AssetLookup.customGenericItemModel("_", "item"))
             .tag(AllItemTags.PRESSURIZED_AIR_SOURCES.tag)
             //.tag(ItemTags.CHEST_ARMOR)
             .register();
+
+    @SuppressWarnings("deprecation")
+    public static final ItemEntry<TinkersDivingHelmetItem> DIVING_HELMET = REGISTRATE
+            .item("diving_helmet",
+                    p -> new TinkersDivingHelmetItem(p, ToolDefinition.create(new ResourceLocation(TinkeringWCreate.MOD_ID, "diving_helmet"))))
+            //.model(AssetLookup.customGenericItemModel("_", "item"))
+            //.tag(ItemTags.CHEST_ARMOR)
+            .register();
+
 
     // this is still weird as fuck
     public static void register()
