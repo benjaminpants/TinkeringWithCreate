@@ -6,7 +6,6 @@
     "case": "tinkeringwcreate:item/divinghelmet/diving_helmet_case",
     "straps":  "tinkeringwcreate:item/divinghelmet/diving_helmet_straps"
   },
-  "modifier_roots": [ "tconstruct:item/tool/armor/plate/helmet/modifiers/" ],
   "parts": [
     { "name": "case", "index": 0 },
     { "name": "straps",  "index": 1 },
