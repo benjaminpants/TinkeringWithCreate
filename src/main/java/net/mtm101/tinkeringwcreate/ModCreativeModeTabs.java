@@ -32,6 +32,7 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModItems.ANDESITE_ALLOY_NUGGET.get());
                         Consumer<ItemStack> output = pOutput::accept;
                         acceptTool(output, ModItems.TINKERS_BACKTANK);
+                        acceptTool(output, ModItems.DIVING_HELMET);
                         acceptPart(output, ModItems.BACKTANK_CASE);
                         acceptPart(output, ModItems.BACKTANK_STRAPS);
                         pOutput.accept(ModItems.BACKTANK_CASE_GOLD_CAST.get());

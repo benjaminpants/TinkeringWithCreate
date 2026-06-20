@@ -1,0 +1,32 @@
+{
+  "icon": {
+    "item": "tinkeringwcreate:tinkers_backtank",
+	"nbt": {
+		"tic_materials":["tconstruct:iron", "tconstruct:cobalt"]
+	}
+  },
+  "input_slots": [
+    {
+      "filter": [
+        {
+          "item": "tinkeringwcreate:backtank_case"
+        }
+      ],
+      "icon": "tinkeringwcreate:backtank_case",
+      "translation_key": "pattern.tinkeringwcreate.backtank_case",
+      "x": 33,
+      "y": 29
+    },
+    {
+      "filter": {
+        "item": "tinkeringwcreate:backtank_straps"
+      },
+      "icon": "tinkeringwcreate:backtank_straps",
+      "translation_key": "pattern.tinkeringwcreate.backtank_straps",
+      "x": 33,
+      "y": 53
+    }
+  ],
+  "sortIndex": 16,
+  "translation_key": "gui.tinkeringwcreate.tinkers_backtank"
+}

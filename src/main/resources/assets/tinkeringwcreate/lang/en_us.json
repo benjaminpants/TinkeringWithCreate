@@ -35,6 +35,10 @@
 
   "pattern.tinkeringwcreate.backtank_straps": "Backtank Straps",
   "pattern.tinkeringwcreate.backtank_case": "Backtank Case",
+  "gui.tinkeringwcreate.tinkers_backtank": "Backtank",
+  "gui.tinkeringwcreate.tinkers_backtank.description": "The Backtank is a wearable tank that can store compressed air for equipment to use. Charged by kinetics.",
+  "gui.tinkeringwcreate.diving_helmet": "Diving Helmet",
+  "gui.tinkeringwcreate.diving_helmet.description": "The Diving Helmet is a low durability helmet that when worn with a Backtank, allows significantly extended water breathing.",
 
   "creativetab.tinkeringwcreate": "Tinkering With Create"
 }

@@ -1,0 +1,32 @@
+{
+  "icon": {
+    "item": "tinkeringwcreate:diving_helmet",
+	"nbt": {
+		"tic_materials":["tconstruct:iron", "tconstruct:cobalt"]
+	}
+  },
+  "input_slots": [
+    {
+      "filter": [
+        {
+          "item": "tinkeringwcreate:backtank_case"
+        }
+      ],
+      "icon": "tconstruct:helmet_plating",
+      "translation_key": "item.tconstruct.helmet_plating",
+      "x": 33,
+      "y": 29
+    },
+    {
+      "filter": {
+        "item": "tinkeringwcreate:backtank_straps"
+      },
+      "icon": "tinkeringwcreate:backtank_straps",
+      "translation_key": "pattern.tinkeringwcreate.backtank_straps",
+      "x": 33,
+      "y": 53
+    }
+  ],
+  "sortIndex": 17,
+  "translation_key": "gui.tinkeringwcreate.diving_helmet"
+}
