@@ -9,7 +9,7 @@
     {
       "filter": [
         {
-          "item": "tinkeringwcreate:backtank_case"
+          "item": "tconstruct:helmet_plating"
         }
       ],
       "icon": "tconstruct:helmet_plating",
