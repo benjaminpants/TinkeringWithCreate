@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:part_builder",
+  "cost": 3,
+  "pattern": "tinkeringwcreate:backtank_straps",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "tinkeringwcreate:backtank_straps_gold_cast"
+    }
+  ],
+  "result": {
+    "item": "tinkeringwcreate:backtank_straps"
+  }
+}

@@ -57,6 +57,7 @@ public class TinkeringWCreate
         ModFluids.register();
         ModPartialModels.register();
         ModFluids.fluidRegister.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
     }
 
     public static ResourceLocation asResource(String path) {

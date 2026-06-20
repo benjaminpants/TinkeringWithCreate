@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "tinkeringwcreate:backtank_straps",
+  "pattern_item": {
+    "tag": "forge:sand/red"
+  },
+  "result": {
+    "count": 4,
+    "item": "tinkeringwcreate:backtank_straps_red_sand_cast"
+  }
+}

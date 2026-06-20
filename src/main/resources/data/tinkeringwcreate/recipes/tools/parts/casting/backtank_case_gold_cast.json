@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "tinkeringwcreate:casts/backtank_case_multi_use"
+  },
+  "item_cost": 9,
+  "result": "tinkeringwcreate:backtank_case"
+}

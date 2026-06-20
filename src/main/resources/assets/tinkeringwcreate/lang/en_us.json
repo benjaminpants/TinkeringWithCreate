@@ -7,6 +7,13 @@
   "block.tinkeringwcreate.foundry_tank": "Brass Compacted Foundry",
   "item.tinkeringwcreate.tinkers_backtank": "Backtank",
   "item.tinkeringwcreate.diving_helmet": "Diving Helmet",
+  "item.tinkeringwcreate.backtank_straps_gold_cast": "Backtank Straps Gold Cast",
+  "item.tinkeringwcreate.backtank_case_gold_cast": "Backtank Case Gold Cast",
+  "item.tinkeringwcreate.backtank_straps_sand_cast": "Backtank Straps Sand Cast",
+  "item.tinkeringwcreate.backtank_case_sand_cast": "Backtank Case Sand Cast",
+  "item.tinkeringwcreate.backtank_straps_red_sand_cast": "Backtank Straps Red Sand Cast",
+  "item.tinkeringwcreate.backtank_case_red_sand_cast": "Backtank Case Red Sand Cast",
+
   "material.tinkeringwcreate.andesite_alloy": "Andesite Alloy",
   "material.tinkeringwcreate.andesite": "Andesite",
   "create.gui.goggles.smeltery.free": "Free: ",
@@ -24,5 +31,10 @@
   "modifier.tinkeringwcreate.capacity.flavor": "20% more air, per air!",
 
   "item.tinkeringwcreate.backtank_case": "Backtank Case",
-  "item.tinkeringwcreate.backtank_straps": "Backtank Straps"
+  "item.tinkeringwcreate.backtank_straps": "Backtank Straps",
+
+  "pattern.tinkeringwcreate.backtank_straps": "Backtank Straps",
+  "pattern.tinkeringwcreate.backtank_case": "Backtank Case",
+
+  "creativetab.tinkeringwcreate": "Tinkering With Create"
 }

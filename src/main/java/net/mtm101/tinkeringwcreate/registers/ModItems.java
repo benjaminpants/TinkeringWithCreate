@@ -15,6 +15,7 @@ import net.mtm101.tinkeringwcreate.divinghelmet.TinkersDivingHelmetItem;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
+import slimeknights.tconstruct.library.tools.part.PartCastItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.tools.ArmorDefinitions;
 import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
@@ -35,6 +36,24 @@ public class ModItems
             .register();
 
     public static final ItemEntry<ToolPartItem> BACKTANK_STRAPS = REGISTRATE.item("backtank_straps", (p) -> new ToolPartItem(p, StatlessMaterialStats.MAILLE.getIdentifier()))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_CASE_GOLD_CAST = REGISTRATE.item("backtank_case_gold_cast", (p) -> new PartCastItem(p, BACKTANK_CASE))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_CASE_SAND_CAST = REGISTRATE.item("backtank_case_sand_cast", (p) -> new PartCastItem(p, BACKTANK_CASE))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_CASE_RED_SAND_CAST = REGISTRATE.item("backtank_case_red_sand_cast", (p) -> new PartCastItem(p, BACKTANK_CASE))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_STRAPS_GOLD_CAST = REGISTRATE.item("backtank_straps_gold_cast", (p) -> new PartCastItem(p, BACKTANK_STRAPS))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_STRAPS_SAND_CAST = REGISTRATE.item("backtank_straps_sand_cast", (p) -> new PartCastItem(p, BACKTANK_STRAPS))
+            .register();
+
+    public static final ItemEntry<PartCastItem> BACKTANK_STRAPS_RED_SAND_CAST = REGISTRATE.item("backtank_straps_red_sand_cast", (p) -> new PartCastItem(p, BACKTANK_STRAPS))
             .register();
 
     public static final ItemEntry<TinkersBacktankBlockItem> TINKERS_BACKTANK_PLACEABLE = REGISTRATE

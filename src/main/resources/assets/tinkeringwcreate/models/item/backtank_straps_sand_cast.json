@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tinkeringwcreate:item/sand_cast/backtank_straps"
+  }
+}
