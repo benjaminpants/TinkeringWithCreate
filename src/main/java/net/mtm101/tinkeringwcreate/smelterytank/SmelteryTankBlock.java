@@ -5,7 +5,9 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -91,6 +93,12 @@ public class SmelteryTankBlock extends Block implements IWrenchable, IBE<Smelter
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_)
     {
         p_206840_1_.add(TOP, BOTTOM, SHAPE, IN_STRUCTURE);
+    }
+
+    @Override
+    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
+        withBlockEntityDo(context.getLevel(), context.getClickedPos(), SmelteryTankBlockEntity::toggleWindows);
+        return InteractionResult.SUCCESS;
     }
 
     public SmelteryTankBlock(Properties pProperties) {

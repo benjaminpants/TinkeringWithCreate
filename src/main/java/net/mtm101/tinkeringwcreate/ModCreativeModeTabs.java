@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.mtm101.tinkeringwcreate.registers.ModBlocks;
+import net.mtm101.tinkeringwcreate.registers.ModFluids;
 import net.mtm101.tinkeringwcreate.registers.ModItems;
 import slimeknights.mantle.registration.object.EnumObject;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
@@ -30,6 +31,7 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModBlocks.FOUNDRY_TANK.asItem());
                         pOutput.accept(ModItems.CRUSHED_COBALT.get());
                         pOutput.accept(ModItems.ANDESITE_ALLOY_NUGGET.get());
+                        pOutput.accept(ModFluids.moltenAndesiteAlloy.getBucket());
                         Consumer<ItemStack> output = pOutput::accept;
                         acceptTool(output, ModItems.TINKERS_BACKTANK);
                         acceptTool(output, ModItems.DIVING_HELMET);

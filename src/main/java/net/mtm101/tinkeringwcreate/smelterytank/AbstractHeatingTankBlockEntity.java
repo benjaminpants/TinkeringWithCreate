@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
@@ -42,7 +43,6 @@ import static java.lang.Math.*;
 
 
 // plenty of code used from create fluid tanks here.
-// quite literally my first ever block entity and it is something of this magnitude.
 public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity implements IMultiBlockEntityContainer.Inventory, IMultiBlockEntityContainer.Fluid, IHaveGoggleInformation
 {
 
@@ -57,6 +57,9 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
     protected int syncCooldown;
     protected boolean queuedSync;
 
+    protected boolean window;
+    protected int luminosity;
+
     protected IFakeSmeltery fakeEntity;
 
     protected LazyOptional<IItemHandler> itemCapability;
@@ -68,6 +71,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         super(type, pos, state);
         width = 1;
         height = 1;
+        window = true;
         updateConnectivity = false;
         updateCapability = false;
         fakeEntity = createNewFakeEntity();
@@ -105,6 +109,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         if (isController()) {
             compound.putInt("Size", width);
             compound.putInt("Height", height);
+            compound.putBoolean("Window", window);
             if (fakeEntity != null) {
                 CompoundTag myTag = new CompoundTag();
                 fakeEntity.saveSynced(myTag);
@@ -195,6 +200,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         if (isController()) {
             width = compound.getInt("Size");
             height = compound.getInt("Height");
+            window = compound.getBoolean("Window");
             if (compound.contains("SmelteryData"))
             {
                 if (fakeEntity == null) {
@@ -237,6 +243,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         if (isController()) {
             compound.putInt("Size", width);
             compound.putInt("Height", height);
+            compound.putBoolean("Window", window);
             if (fakeEntity != null) {
                 CompoundTag myTag = new CompoundTag();
                 fakeEntity.saveSynced(myTag);
@@ -265,6 +272,14 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         if (blockEntity instanceof AbstractHeatingTankBlockEntity)
             return (AbstractHeatingTankBlockEntity)blockEntity;
         return null;
+    }
+
+    @Override
+    protected AABB createRenderBoundingBox() {
+        if (isController())
+            return super.createRenderBoundingBox().expandTowards(width - 1, height - 1, width - 1);
+        else
+            return super.createRenderBoundingBox();
     }
 
     @Override
@@ -307,7 +322,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
         if (blockstateIsSelf(state)) {
             state = state.setValue(SmelteryTankBlock.BOTTOM, true);
             state = state.setValue(SmelteryTankBlock.TOP, true);
-            state = state.setValue(SmelteryTankBlock.SHAPE, FluidTankBlock.Shape.WINDOW/*window ? Shape.WINDOW : Shape.PLAIN*/);
+            state = state.setValue(SmelteryTankBlock.SHAPE, window ? FluidTankBlock.Shape.WINDOW : FluidTankBlock.Shape.PLAIN);
             getLevel().setBlock(worldPosition, state, 22);
         }
 
@@ -321,6 +336,13 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
             return;
         }
 
+    }
+
+    public void toggleWindows() {
+        AbstractHeatingTankBlockEntity be = getControllerBE();
+        if (be == null)
+            return;
+        be.setWindows(!be.window);
     }
 
     @Override
@@ -387,14 +409,14 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
             level.setBlock(getBlockPos(), state, 6);
         }
         if (isController()) {
-            setWindows(true);
+            setWindows(window);
             refreshController();
         }
         setChanged();
     }
 
     public void setWindows(boolean window) {
-        //this.window = window;
+        this.window = window;
         for (int yOffset = 0; yOffset < height; yOffset++) {
             for (int xOffset = 0; xOffset < width; xOffset++) {
                 for (int zOffset = 0; zOffset < width; zOffset++) {

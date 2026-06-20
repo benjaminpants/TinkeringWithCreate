@@ -5,7 +5,9 @@ import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -23,6 +25,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.mtm101.tinkeringwcreate.registers.ModBlockEntities;
+import net.mtm101.tinkeringwcreate.smelterytank.SmelteryTankBlockEntity;
 import slimeknights.tconstruct.smeltery.block.controller.ControllerBlock;
 
 public class FoundryTankBlock extends Block implements IWrenchable, IBE<FoundryTankBlockEntity>
@@ -63,6 +66,12 @@ public class FoundryTankBlock extends Block implements IWrenchable, IBE<FoundryT
             default:
                 return state;
         }
+    }
+
+    @Override
+    public InteractionResult onWrenched(BlockState state, UseOnContext context) {
+        withBlockEntityDo(context.getLevel(), context.getClickedPos(), FoundryTankBlockEntity::toggleWindows);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
