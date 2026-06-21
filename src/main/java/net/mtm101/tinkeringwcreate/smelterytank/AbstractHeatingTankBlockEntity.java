@@ -218,6 +218,10 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
             return;
 
         boolean changeOfController = !Objects.equals(controllerBefore, controller);
+        if (changeOfController)
+        {
+            refreshCapability();
+        }
         if (changeOfController || prevSize != width || prevHeight != height) {
             if (hasLevel())
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 16);
