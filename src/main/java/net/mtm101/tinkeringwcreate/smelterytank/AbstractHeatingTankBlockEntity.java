@@ -35,6 +35,7 @@ import slimeknights.tconstruct.smeltery.block.entity.module.MeltingModuleInvento
 import slimeknights.tconstruct.smeltery.block.entity.module.MultitankFuelModule;
 import slimeknights.tconstruct.smeltery.block.entity.tank.SmelteryTank;
 
+import javax.annotation.Nullable;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,7 @@ import static java.lang.Math.*;
 
 
 // plenty of code used from create fluid tanks here.
+// TODO: How do I actually detect when multiple controllers have merged into one? Create's functionality seems to be quite hard coded
 public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity implements IMultiBlockEntityContainer.Inventory, IMultiBlockEntityContainer.Fluid, IHaveGoggleInformation
 {
 
@@ -88,6 +90,29 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
             fakeEntity.setLevel(pLevel);
         }
     }
+
+    // window stuff
+    @Override
+    public void setExtraData(@Nullable Object data) {
+        if (data instanceof Boolean)
+            window = (boolean) data;
+    }
+
+    @Override
+    @Nullable
+    public Object getExtraData() {
+        return window;
+    }
+
+    @Override
+    public Object modifyExtraData(Object data) {
+        if (data instanceof Boolean windows) {
+            windows |= window;
+            return windows;
+        }
+        return data;
+    }
+
 
     public void refreshCapability()
     {
@@ -218,10 +243,6 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
             return;
 
         boolean changeOfController = !Objects.equals(controllerBefore, controller);
-        if (changeOfController)
-        {
-            refreshCapability();
-        }
         if (changeOfController || prevSize != width || prevHeight != height) {
             if (hasLevel())
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 16);
@@ -472,7 +493,7 @@ public abstract class AbstractHeatingTankBlockEntity extends SmartBlockEntity im
 
     public int getMaxHeight() {
         return AllConfigs.server().fluids.fluidTankMaxHeight.get();
-    }
+    }  // it seems like this starts running into issues near the end and im not sure why
 
     @Override
     public int getHeight() {
