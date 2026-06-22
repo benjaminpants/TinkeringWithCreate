@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mtm101.tinkeringwcreate.backtanks.BacktankCaseMaterialStats;
 import net.mtm101.tinkeringwcreate.backtanks.TinkersBacktankArmorLayer;
+import net.mtm101.tinkeringwcreate.events.EntityDeathLiquifierHandler;
 import net.mtm101.tinkeringwcreate.registers.*;
 import org.slf4j.Logger;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -68,6 +70,7 @@ public class TinkeringWCreate
     {
         // Some common setup code
         MaterialRegistry.getInstance().registerStatType(BacktankCaseMaterialStats.INSTANCE, MaterialRegistry.ARMOR);
-        //registerStatType
+        // events
+        MinecraftForge.EVENT_BUS.register(EntityDeathLiquifierHandler.class);
     }
 }
